@@ -53,12 +53,17 @@ class SimulatorAsync:
     '''
     def simulate_step(self):
         #select random vertex:
-        node = rd.choice(list(self.marked));
-        nodelist = self.update_func(node, self.graph);
-        for i in nodelist:
-            self.marked.add(i);
-        if self.graph.node[node]['state'] == 0:
-            self.marked.discard(node);
+        nodelist = []; node = -1;
+        try:
+            node = rd.choice(list(self.marked));
+            nodelist = self.update_func(node, self.graph);
+        except Exception:
+            nodelist = [];
+        else:
+            for i in nodelist:
+                self.marked.add(i);
+            if self.graph.node[node]['state'] == 0:
+                self.marked.discard(node);
     
     def run_simulation(self, steps = 500):
         while(steps > 0):

@@ -7,7 +7,7 @@ def initialize():
     global sim 
     graph = FileIO.read_dolphins();
     sim = SimulatorAsync(graph, Epidemic.randomized_infection(0.1), 
-                     Epidemic.randomized_update(0.2, 0.4));
+                     Epidemic.randomized_update(0.2, 0.9));
 
 def observe():
     global sim
